@@ -1,5 +1,16 @@
 <div>
   <h3>Student Details</h3>
+  <div>
+    <input #newPet placeholder="Add new pet">
+    <button (click)="addNewPet(newPet.value); newPet.value = ''">
+      Add new pet
+    </button>
+    <br>
+    My Pets:
+    <ul>
+      <li *ngFor="let pet of pets; let i = index">{{ i + 1 }} - {{pet}}</li>
+    </ul>
+  </div>
   <div [ngClass]="{
       'grayed': grade < 60, 
       'green': grade >= 60 }">
