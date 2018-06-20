@@ -1,0 +1,17 @@
+<div>
+  <h3>Student Details</h3>
+  <div [ngClass]="{
+      'grayed': grade < 60, 
+      'green': grade >= 60 }">
+    <h3>First Name: {{ firstName }}</h3>
+    <p>
+      <input #fname type="text" 
+          [value]="firstName"
+          (keyup)="nameChanged(fname.value)" >
+    </p>
+    <h4>Email: {{ email }}</h4>
+    <p>
+      <img src="{{image}}">
+    </p>
+  </div>
+</div>
