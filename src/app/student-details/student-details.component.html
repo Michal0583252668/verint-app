@@ -1,0 +1,22 @@
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="{{ student.image }}" alt="{{ student.name }}">
+    <div class="progress">
+        <div class="progress-bar" role="progressbar"         
+        [ngStyle]="{'width.%': student.courseProgress }" 
+        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+        {{ student.courseProgress }}%
+      </div>
+    </div>
+    <div class="card-body">
+        <h1>{{ student.name }} <span class="badge badge-secondary">{{ student.course }}</span></h1>
+      <p class="card-text">Email: {{ student.email }} </p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    <div *ngIf="student.balance >= 0" class="alert alert-success" role="alert">
+        Balance: {{ student.balance }}
+    </div> 
+    <div *ngIf="student.balance < 0" class="alert alert-danger" role="alert">
+        NOTICE: Student in debt {{ student.balance }}
+        <a href="emailto:{{email}}">{{ student.email }}</a>
+    </div>
+</div>
