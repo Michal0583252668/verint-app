@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-md-6">      
+      <form [formGroup]="addForm" (ngSubmit)="addNewStudent()" novalidate>
+        <div class="form-group">
+          <label for="sname">Name</label>
+          <input type="text" class="form-control" id="sname" placeholder="Name"
+            formControlName="name">
+            <div *ngIf="name.dirty && name.invalid">
+                <div class="text-danger" *ngIf="name.errors.required">
+                    Name is required
+                </div>
+                <div *ngIf="name.errors.minlength">
+                  <div class="text-danger">
+                      Name should be no less than {{ name.errors.minlength.requiredLength }} characters
+                  </div>
+                </div>
+            </div>
+            <!-- <div>
+                <pre>Valid: {{ addForm.controls.name.valid }} | Invalid: {{ addForm.controls.name.invalid }}</pre>
+                <pre>Pristine: {{ addForm.controls.name.pristine }} | Dirty: {{ addForm.controls.name.dirty }}</pre>
+                <pre>Touched: {{ addForm.controls.name.touched }} | Untouched: {{ addForm.controls.name.untouched }}</pre>
+            </div>             -->
+        </div>
+        <div class="form-group">
+          <label for="semail">Email address</label>
+          <input type="email" class="form-control" id="semail" placeholder="name@example.com"
+          formControlName="email">
+          <div *ngIf="email.dirty && email.invalid">
+            <div class="text-danger" *ngIf="email.errors.required">
+              Email is required
+            </div>
+            <div class="text-danger" *ngIf="email.errors.pattern">
+              Invalid email
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="scourse">Course</label>
+          <select class="form-control" id="scourse" formControlName="course">
+            <option value="">Select</option>
+            <option value="Angular">Angular</option>
+            <option value="Java">Java</option>
+            <option value="C#">C#</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="sgrade">Grade</label>
+          <input type="range" class="form-control" id="sgrade" min="0" max="100"
+          formControlName="grade">
+        </div>
+        <div class="form-group">
+          <label for="sprogress">Course Progress</label>
+          <input type="range" class="form-control" id="sprogress" min="0" max="100"
+            formControlName="courseProgress">
+        </div>
+        <div class="form-group">
+          <label for="sbalance">Balance</label>
+          <input type="number" class="form-control" id="sprogress" min="-10000" max="10000"
+          formControlName="balance">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="col-md-4">
+      <pre>{{ addForm.value | json }} </pre>
+    </div>
+</div>
