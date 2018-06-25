@@ -1,0 +1,11 @@
+<div class="form-group">
+  <label>Filter Students</label>
+  <select class="form-control" (change)="selected($event.target.value)">
+    <option value="all">All Students</option>
+    <option value="ids">id between 1-6</option>
+    <option value="age">Age is bigger than 30</option>
+    <option value="avg">avg grade over 90</option>
+    <option value="phone">phone number ends with 4</option>
+    <option value="name">name starts with b</option>
+  </select>
+</div>

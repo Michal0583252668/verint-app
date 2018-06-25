@@ -7,6 +7,9 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { StudentsListComponent } from './students-list/students-list.component';
+import { FilterStudentsComponent } from './01-ex-filter-students-table/filter-students/filter-students.component';
+import { StudentsTableComponent } from './01-ex-filter-students-table/students-table/students-table.component';
+import { FilterStudentsSelectionComponent } from './01-ex-filter-students-table/filter-students-selection/filter-students-selection.component';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { StudentsListComponent } from './students-list/students-list.component';
     HeaderComponent,
     HomeComponent,
     StudentDetailsComponent,
-    StudentsListComponent 
+    StudentsListComponent,
+    FilterStudentsComponent,
+    StudentsTableComponent,
+    FilterStudentsSelectionComponent
   ],
   imports: [
     BrowserModule
