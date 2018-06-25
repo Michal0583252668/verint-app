@@ -11,6 +11,8 @@ import { FilterStudentsComponent } from './01-ex-filter-students-table/filter-st
 import { StudentsTableComponent } from './01-ex-filter-students-table/students-table/students-table.component';
 import { FilterStudentsSelectionComponent } from './01-ex-filter-students-table/filter-students-selection/filter-students-selection.component';
 import { AddStudentComponent } from './add-student/add-student.component';
+import { StudentsNamesComponent } from './02-ex-students-names-details-add-new/students-names/students-names.component';
+import { StudentsDetailsAddComponent } from './02-ex-students-names-details-add-new/students-details-add/students-details-add.component';
 
 
 @NgModule({
@@ -23,13 +25,15 @@ import { AddStudentComponent } from './add-student/add-student.component';
     FilterStudentsComponent,
     StudentsTableComponent,
     FilterStudentsSelectionComponent,
-    AddStudentComponent
+    AddStudentComponent,
+    StudentsNamesComponent,
+    StudentsDetailsAddComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [StudentsDetailsAddComponent]
 })
 export class AppModule { }

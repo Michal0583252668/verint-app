@@ -1,5 +1,5 @@
-import { Courses } from './../models/student';
-import { Component } from '@angular/core';
+import { Courses, Student } from './../models/student';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { VerintValidators } from '../models/validators/VerintValidators';
 
@@ -10,14 +10,19 @@ import { VerintValidators } from '../models/validators/VerintValidators';
 })
 export class AddStudentComponent {
 
+  @Output('newStudent') newStudent:EventEmitter<Student> = new EventEmitter<Student>();
+
   addForm:FormGroup;
   
   get fullName() { return this.addForm.controls.fullName; }
   get firstName() { return (this.addForm.controls.fullName as FormGroup).controls.firstName; }
   get lastName() { return (this.addForm.controls.fullName as FormGroup).controls.lastName; }
   get email() { return this.addForm.controls.email; }
+  get grade() { return this.addForm.controls.grade; }
   get course() { return this.addForm.controls.course; }
+  get courseProgress() {return this.addForm.controls.courseProgress;}
   get balance() { return this.addForm.controls.balance; }
+  get image() { return this.addForm.controls.image; }
 
   courses:string[];
 
@@ -42,7 +47,16 @@ export class AddStudentComponent {
 
   addNewStudent(){
     if(this.addForm.valid){
-      console.log(this.addForm.value);
+      const student = new Student(
+        `${this.firstName.value} ${this.lastName.value}`,
+        this.email.value,
+        this.course.value,
+        this.grade.value,
+        this.courseProgress.value,
+        this.balance.value,
+        this.image.value
+      );
+      this.newStudent.emit(student);
     }else{
       console.log('Form not valid');
     }

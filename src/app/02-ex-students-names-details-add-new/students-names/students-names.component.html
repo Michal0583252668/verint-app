@@ -1,0 +1,9 @@
+<ul class="list-group">
+    <li class="list-group-item active">Student Names</li>
+    <li class="list-group-item"
+      (click)="selected(student)"
+      [ngClass]="{'active': currentStudent === student}"
+      *ngFor="let student of students">
+      {{ student.name }}
+    </li>
+  </ul>

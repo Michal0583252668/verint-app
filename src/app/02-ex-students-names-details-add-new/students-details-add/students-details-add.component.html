@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-md-3">
+        <app-students-names 
+            [students]="students"
+            (selected)="selectedStudent($event)"></app-students-names>
+    </div>
+    <div class="col-md-4">
+        <app-student-details *ngIf="currentStudent"
+            [inputStudent]="currentStudent"></app-student-details>
+    </div>
+    <div class="col-md-5">
+        <app-add-student
+            (newStudent)="addNewStudent($event)"></app-add-student>
+    </div>
+</div>
