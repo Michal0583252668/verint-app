@@ -4,25 +4,54 @@
       Add New Student
     </div>
       <form [formGroup]="addForm" (ngSubmit)="addNewStudent()" novalidate>
-        <div class="form-group">
-          <label for="sname">Name</label>
-          <input type="text" class="form-control" id="sname" placeholder="Name"
-            formControlName="name">
-            <div *ngIf="name.dirty && name.invalid">
-                <div class="text-danger" *ngIf="name.errors.required">
-                    Name is required
-                </div>
-                <div *ngIf="name.errors.minlength">
-                  <div class="text-danger">
-                      Name should be no less than {{ name.errors.minlength.requiredLength }} characters
+        <div formGroupName="fullName"
+          [ngClass]="{'input-error': fullName.errors}">
+          <div class="form-group">
+            <label for="sfname">First Name</label>
+            <input type="text" class="form-control" id="sfname" placeholder="Name"
+              formControlName="firstName"
+              [ngClass]="{ 'input-error': firstName.invalid }">
+              <div *ngIf="firstName.dirty && firstName.invalid">
+                  <div class="text-danger" *ngIf="firstName.errors.required">
+                      First Name is required
                   </div>
-                </div>
-            </div>
-            <!-- <div>
-                <pre>Valid: {{ addForm.controls.name.valid }} | Invalid: {{ addForm.controls.name.invalid }}</pre>
-                <pre>Pristine: {{ addForm.controls.name.pristine }} | Dirty: {{ addForm.controls.name.dirty }}</pre>
-                <pre>Touched: {{ addForm.controls.name.touched }} | Untouched: {{ addForm.controls.name.untouched }}</pre>
-            </div>             -->
+                  <div *ngIf="firstName.errors.minlength">
+                    <div class="text-danger">
+                        First Name should be no less than {{ firstName.errors.minlength.requiredLength }} characters
+                    </div>
+                  </div>
+              </div>
+              <!-- <div>
+                  <pre>Valid: {{ addForm.controls.name.valid }} | Invalid: {{ addForm.controls.name.invalid }}</pre>
+                  <pre>Pristine: {{ addForm.controls.name.pristine }} | Dirty: {{ addForm.controls.name.dirty }}</pre>
+                  <pre>Touched: {{ addForm.controls.name.touched }} | Untouched: {{ addForm.controls.name.untouched }}</pre>
+              </div>             -->
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" class="form-control" id="lname" placeholder="Name"
+              formControlName="lastName">
+              <div *ngIf="lastName.dirty && lastName.invalid">
+                  <div class="text-danger" *ngIf="lastName.errors.required">
+                      Last Name is required
+                  </div>
+                  <div *ngIf="lastName.errors.minlength">
+                    <div class="text-danger">
+                        Last Name should be no less than {{ lastName.errors.minlength.requiredLength }} characters
+                    </div>
+                  </div>
+              </div>
+              <!-- <div>
+                  <pre>Valid: {{ addForm.controls.name.valid }} | Invalid: {{ addForm.controls.name.invalid }}</pre>
+                  <pre>Pristine: {{ addForm.controls.name.pristine }} | Dirty: {{ addForm.controls.name.dirty }}</pre>
+                  <pre>Touched: {{ addForm.controls.name.touched }} | Untouched: {{ addForm.controls.name.untouched }}</pre>
+              </div>             -->
+          </div>
+          <div *ngIf="fullName.errors?.whereIsSymon">
+              <div class="text-danger">
+                  {{ fullName.errors.whereIsSymon }}
+              </div>
+          </div>
         </div>
         <div class="form-group">
           <label for="semail">Email address</label>
@@ -83,7 +112,7 @@
       </button>
       </form>
     </div>
-    <!-- <div class="col-md-4">
+    <div class="col-md-4">
       <pre>{{ addForm.value | json }} </pre>
-    </div> -->
+    </div>
 </div>

@@ -1,4 +1,4 @@
-import { AbstractControl, ValidationErrors } from "@angular/forms";
+import { AbstractControl, ValidationErrors, FormGroup } from "@angular/forms";
 
 export class VerintValidators {
     static domainEmailValidator(domain:string) {
@@ -15,6 +15,26 @@ export class VerintValidators {
             }
             }
             
+            return null;
+        }
+    }
+
+    static fullNameIsSymonCohen(){
+        return (control:FormGroup): ValidationErrors | null => {
+            const fname:string = control.controls.firstName.value,
+                  lname:string = control.controls.lastName.value;
+
+            console.log(fname, lname);
+
+            if(!fname || !lname) return null;
+
+            if(!fname.toLowerCase().includes('symon') || 
+               !lname.toLowerCase().includes('cohen')){
+                return {
+                    'whereIsSymon': 'Symon Cohen is missing'
+                }
+            }
+
             return null;
         }
     }

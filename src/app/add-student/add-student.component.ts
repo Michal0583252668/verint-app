@@ -12,7 +12,9 @@ export class AddStudentComponent {
 
   addForm:FormGroup;
   
-  get name() { return this.addForm.controls.name; }
+  get fullName() { return this.addForm.controls.fullName; }
+  get firstName() { return (this.addForm.controls.fullName as FormGroup).controls.firstName; }
+  get lastName() { return (this.addForm.controls.fullName as FormGroup).controls.lastName; }
   get email() { return this.addForm.controls.email; }
   get course() { return this.addForm.controls.course; }
   get balance() { return this.addForm.controls.balance; }
@@ -21,7 +23,10 @@ export class AddStudentComponent {
 
   constructor() { 
     this.addForm = new FormGroup({
-      name: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      fullName: new FormGroup({
+        firstName: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+        lastName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
+      }, VerintValidators.fullNameIsSymonCohen()), 
       email: new FormControl(null, 
           [Validators.required, Validators.pattern(/^\S+@\S+$/),
             VerintValidators.domainEmailValidator('gmail') ]),
