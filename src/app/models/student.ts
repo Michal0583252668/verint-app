@@ -9,3 +9,11 @@ export class Student {
         public image = 'http://thefuturegraduate.com/wp-content/uploads/2017/02/2.jpg'  
     ){}
 }
+
+export enum Courses {
+    'Angular',
+    'Java',
+    'C#',
+    'C++',
+    'PHP'
+}

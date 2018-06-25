@@ -1,5 +1,8 @@
 <div class="row">
-    <div class="col-md-6">      
+  <div class="col-md-6">      
+    <div class="alert alert-info" role="alert">
+      Add New Student
+    </div>
       <form [formGroup]="addForm" (ngSubmit)="addNewStudent()" novalidate>
         <div class="form-group">
           <label for="sname">Name</label>
@@ -32,16 +35,22 @@
             <div class="text-danger" *ngIf="email.errors.pattern">
               Invalid email
             </div>
+            <div class="text-danger" *ngIf="email.errors.domainEmail">
+              {{ email.errors.domainEmail }}
+            </div>
           </div>
         </div>
         <div class="form-group">
           <label for="scourse">Course</label>
           <select class="form-control" id="scourse" formControlName="course">
             <option value="">Select</option>
-            <option value="Angular">Angular</option>
-            <option value="Java">Java</option>
-            <option value="C#">C#</option>
+            <option *ngFor="let course of courses" value="{{course}}">{{course}}</option>
           </select>
+          <div *ngIf="course.dirty && course.invalid">
+            <div class="text-danger" *ngIf="course.errors.required">
+                Please select a course
+            </div>
+          </div>
         </div>
         <div class="form-group">
           <label for="sgrade">Grade</label>
@@ -57,11 +66,24 @@
           <label for="sbalance">Balance</label>
           <input type="number" class="form-control" id="sprogress" min="-10000" max="10000"
           formControlName="balance">
+          <div *ngIf="balance.dirty && balance.invalid">
+            <div class="text-danger" *ngIf="balance.errors.required">
+              Balance is required
+            </div>
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group">
+          <label for="simage">Image</label>
+          <input type="text" class="form-control" id="simage"
+          formControlName="image">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block"
+          [disabled]="addForm.invalid">
+          {{ addForm.valid ? 'Submit' : 'Please fill in every field' }}
+      </button>
       </form>
     </div>
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
       <pre>{{ addForm.value | json }} </pre>
-    </div>
+    </div> -->
 </div>
