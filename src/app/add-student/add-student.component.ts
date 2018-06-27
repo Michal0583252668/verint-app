@@ -34,7 +34,7 @@ export class AddStudentComponent {
       }, VerintValidators.fullNameIsSymonCohen()), 
       email: new FormControl(null, 
           [Validators.required, Validators.pattern(/^\S+@\S+$/),
-            VerintValidators.domainEmailValidator('gmail') ]),
+            VerintValidators.domainEmailValidator('gmail')]),
       course: new FormControl(null, Validators.required),
       grade: new FormControl(0, [Validators.required, Validators.min(0), Validators.max(100)]),
       courseProgress: new FormControl(0, [Validators.required, Validators.min(0), Validators.max(100)]),

@@ -14,6 +14,7 @@ import { AddStudentComponent } from './add-student/add-student.component';
 import { StudentsNamesComponent } from './02-ex-students-names-details-add-new/students-names/students-names.component';
 import { StudentsDetailsAddComponent } from './02-ex-students-names-details-add-new/students-details-add/students-details-add.component';
 import { EditStudentComponent } from './edit-student/edit-student.component';
+import { DomainEmailValidatorDirective } from './models/validators/domain-email-validator.directive';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { EditStudentComponent } from './edit-student/edit-student.component';
     AddStudentComponent,
     StudentsNamesComponent,
     StudentsDetailsAddComponent,
-    EditStudentComponent
+    EditStudentComponent,
+    DomainEmailValidatorDirective
   ],
   imports: [
     BrowserModule,
