@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -13,6 +13,7 @@ import { FilterStudentsSelectionComponent } from './01-ex-filter-students-table/
 import { AddStudentComponent } from './add-student/add-student.component';
 import { StudentsNamesComponent } from './02-ex-students-names-details-add-new/students-names/students-names.component';
 import { StudentsDetailsAddComponent } from './02-ex-students-names-details-add-new/students-details-add/students-details-add.component';
+import { EditStudentComponent } from './edit-student/edit-student.component';
 
 
 @NgModule({
@@ -27,11 +28,13 @@ import { StudentsDetailsAddComponent } from './02-ex-students-names-details-add-
     FilterStudentsSelectionComponent,
     AddStudentComponent,
     StudentsNamesComponent,
-    StudentsDetailsAddComponent
+    StudentsDetailsAddComponent,
+    EditStudentComponent
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [StudentsDetailsAddComponent]

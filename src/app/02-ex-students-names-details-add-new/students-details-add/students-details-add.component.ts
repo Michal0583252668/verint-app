@@ -17,6 +17,7 @@ export class StudentsDetailsAddComponent implements OnInit {
   ];
   
   currentStudent:Student;
+  isEditingStudent:boolean = false;
 
   constructor() { }
 
@@ -25,9 +26,14 @@ export class StudentsDetailsAddComponent implements OnInit {
 
   selectedStudent(student:Student){
     this.currentStudent = student;
+    this.isEditingStudent = false;
   }
 
   addNewStudent(student:Student){
     this.students.push(student);
+  }
+
+  editStudent(){
+    this.isEditingStudent = !this.isEditingStudent;
   }
 }

@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-md-12">      
+    <div class="alert alert-info" role="alert">
+      Edit Student
+    </div>    
+      <form #editForm="ngForm" (ngSubmit)="editStudent(editForm)"  novalidate>
+          <div class="form-group">
+            <label for="sname">Name</label>
+            <input type="text" class="form-control" id="sfname" placeholder="Name"
+              required minlength="3"   
+              name="name" [(ngModel)]="student.name"
+              #name="ngModel"
+              [class.input-error]="name?.invalid && name?.touched">
+              <div *ngIf="name.dirty && name.invalid">
+                  <div class="text-danger" *ngIf="name.errors.required">
+                      Name is required
+                  </div>
+                  <div *ngIf="name.errors?.minlength">
+                    <div class="text-danger">
+                        Name should be no less than 3 characters
+                    </div>
+                  </div>
+              </div>              
+          </div>          
+          <pre>Valid {{ name?.valid }} | Invalid {{ name?.invalid }}</pre>
+        <div class="form-group">
+          <label for="semail">Email address</label>
+          <input type="email" class="form-control" id="semail" placeholder="name@example.com"
+                name="email" [(ngModel)]="student.email">
+        </div>
+        <div class="form-group">
+          <label for="scourse">Course</label>
+          <select class="form-control" id="scourse"
+                name="course" [(ngModel)]="student.course">
+            <option value="">Select</option>
+            <option *ngFor="let course of courses" value="{{course}}">{{course}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="sgrade">Grade</label>
+          <input type="range" class="form-control" id="sgrade" min="0" max="100"
+                name="grade" [(ngModel)]="student.grade">
+        </div>
+        <div class="form-group">
+          <label for="sprogress">Course Progress</label>
+          <input type="range" class="form-control" id="sprogress" min="0" max="100"
+                name="courseProgress" [(ngModel)]="student.courseProgress">
+        </div>
+        <div class="form-group">
+          <label for="sbalance">Balance</label>
+          <input type="number" class="form-control" id="sprogress" min="-10000" max="10000"
+              name="balance" [(ngModel)]="student.balance">
+        </div>
+        <div class="form-group">
+          <img src="{{ student.image || 'assets/images/default-image.png' }}">
+          <label for="simage">Image</label>
+          <input type="text" class="form-control" id="simage"
+              name="image" [(ngModel)]="student.image">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block"
+          [disabled]="editForm.invalid">
+          Submit
+      </button>
+      </form>
+    </div>
+    <!-- <div class="col-md-4">
+      <pre>{{ editForm.value | json }} </pre>
+    </div> -->
+</div>

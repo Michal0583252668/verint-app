@@ -6,10 +6,13 @@
     </div>
     <div class="col-md-4">
         <app-student-details *ngIf="currentStudent"
-            [inputStudent]="currentStudent"></app-student-details>
+            [inputStudent]="currentStudent"
+            (onStudentEdit)="editStudent()"></app-student-details>
     </div>
     <div class="col-md-5">
-        <app-add-student
-            (newStudent)="addNewStudent($event)"></app-add-student>
+        <app-edit-student *ngIf="isEditingStudent"
+            [student]="currentStudent"></app-edit-student>
+        <!-- <app-add-student
+            (newStudent)="addNewStudent($event)"></app-add-student> -->
     </div>
 </div>

@@ -10,7 +10,10 @@
     <div class="card-body">
         <h1>{{ student.name }} <span class="badge badge-secondary">{{ student.course }}</span></h1>
       <p class="card-text">Email: {{ student.email }} </p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a class="btn btn-primary"
+         (click)="editThisStudent()">
+        Edit {{ student.name }}
+       </a>
     </div>
     <div *ngIf="student.balance >= 0" class="alert alert-success" role="alert">
         Balance: {{ student.balance }}
